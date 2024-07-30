@@ -1,12 +1,16 @@
-const express = require('express')
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+dotenv.config()
 const app = express()
-const cors = require('cors')
-require('dotenv').config();
 const port = process.env.PORT || 3006
+import main from './db.js'
+
 
 app.use(express.json())
 app.use(cors())
 
+main()
 app.get('/', (req, res) => {
     res.send("Hello")
 })
