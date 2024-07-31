@@ -1,20 +1,23 @@
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
-dotenv.config()
-const app = express()
-const port = process.env.PORT || 3006
-import main from './db.js'
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+const app = express();
+const port = process.env.PORT || 3006;
+import main from "./db.js";
+import userRoutes from "./routes/user.route.js";
 
+app.use(express.json());
+app.use(cors());
 
-app.use(express.json())
-app.use(cors())
+main();
 
-main()
-app.get('/', (req, res) => {
-    res.send("Hello")
-})
+app.use("/api/user", userRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello");
+});
 
 app.listen(port, () => {
-    console.log(`Your app is listening on http://localhost:${port}`)
-})
+  console.log(`Your app is listening on http://localhost:${port}`);
+});
