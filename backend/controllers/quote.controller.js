@@ -26,7 +26,7 @@ const getquote = async (req, res) => {
     const quoteList = await Quote.find({writtenBy : id});
     res.status(200).json({ message: "get successfully", quoteList });
   } catch (err) {
-    req.status(500).json({ message: "Error get user" });
+    res.status(500).json({ message: "Error get user" });
     console.log("Error get quote", err);
   }
 };

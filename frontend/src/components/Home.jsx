@@ -11,16 +11,16 @@ export default function Home() {
     async function fetchData() {
       try {
         const response = await axios.get(API, {
-            headers : {
-                "x-access-token" : localStorage.getItem('token')
-            }
-        })
-        console.log(response)
+          headers: {
+            "x-access-token": localStorage.getItem("token"),
+          },
+        });
+        console.log(response);
       } catch (err) {
         console.log(err);
       }
     }
-    fetchData()
+    fetchData();
   }, []);
 
   return <div>Home</div>;
